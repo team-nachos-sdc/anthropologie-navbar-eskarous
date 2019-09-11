@@ -13,8 +13,10 @@ const dbHelpers = {
     });
   },
 
-  updateProduct: () => {
-
+  updateProduct: (productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image) => {
+    return ProductDetail.findOneAndUpdate({
+      productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image
+    });
   },
 
   deleteProduct: (productCategoryId) => {
