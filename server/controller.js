@@ -7,12 +7,18 @@ const controller = {
     console.log('what is id', id)
     getById(id)
     .then((data) => {
-      res.status(200).send(data)})
-    .catch((err) => res.status(400).send(err));
+      res.status(200).send(data)
+    })
+    .catch(err => res.status(400).send(err));
   },
 
   post: (req, res) => {
-    
+    let { productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image } = req.body;
+    createProduct(productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image)
+    .then((data) => {
+      res.status(201).send(data)
+    })
+    .catch(err => res.status(401).send(err));
   },
 
   put: (req, res) => {
@@ -26,7 +32,7 @@ const controller = {
     .then((data) => {
       res.status(203).send(data)
     })
-    .catch((err) => res.status(403).send(err));
+    .catch(err => res.status(403).send(err));
   }
 
 }
