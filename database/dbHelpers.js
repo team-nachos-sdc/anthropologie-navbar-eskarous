@@ -5,7 +5,22 @@ const dbHelpers = {
     return ProductDetail.findOne({
       productCategoryId
     })
+  },
+
+  createProduct: (productCategoryId, productCategory, productName) => {
+
+  },
+
+  updateProduct: () => {
+
+  },
+
+  deleteProduct: (productCategoryId) => {
+    return ProductDetail.deleteOne({
+      productCategoryId
+    })
   }
+
 }
 
 module.exports = dbHelpers;

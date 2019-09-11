@@ -24,7 +24,11 @@
     "url": "https://github.com/ArthurKimGl19/Arthur_Kim_Product_Detail_Component/issues"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^24.9.0",
+    "superagent": "^5.1.0",
+    "supertest": "^4.0.2"
   },
   "homepage": "https://github.com/ArthurKimGl19/Arthur_Kim_Product_Detail_Component#readme",
   "dependencies": {
@@ -51,12 +55,5 @@
     "style-loader": "^1.0.0",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "jest": "^24.9.0",
-    "superagent": "^5.1.0",
-    "supertest": "^4.0.2"
   }
 }
