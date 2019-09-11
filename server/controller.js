@@ -1,4 +1,4 @@
-const { getById } = require('../database/dbHelpers.js');
+const dbHelpers = require('../database/dbHelpers.js');
 
 const controller = {
 

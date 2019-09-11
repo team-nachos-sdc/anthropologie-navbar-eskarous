@@ -5,6 +5,7 @@ router
   .route('/products/:id')
     .get(controller.get)
     .delete(controller.delete)
+    .put(controller.put)
 
 router
   .route('/products')
