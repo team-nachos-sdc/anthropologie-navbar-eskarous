@@ -1,4 +1,10 @@
-const dbHelpers = require('../database/dbHelpers.js');
+const { 
+  getById,
+  createProduct,
+  updateProduct,
+  deleteProduct
+
+} = require('../database/dbHelpers.js');
 
 const controller = {
 
@@ -18,11 +24,11 @@ const controller = {
   },
 
   put: (req, res) => {
-    let { id } = req.params;
-    let { productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image } = req.body;
-    updateProduct(id, productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image)
+    let {id: productCategoryId} = req.body.productCategoryId;
+    let {productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image } = req.body;
+    updateProduct(productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image)
     .then(data => res.status(202).send(data))
-    .catch(err => res.status(402).send(data));
+    .catch(err => res.status(402).send(err));
   },
 
   delete: (req, res) => {
