@@ -30,8 +30,6 @@ const {
   assignCorrectImageLinks,
   colorGrabber
 } = require('./seederFunctions.js')
-const fs = require('fs');
-const path = require('path');
 const { dressImageLinks } = require('./dressImageLinks.js');
 const { pantsImageLinks } = require('./pantsImageLinks.js');
 const { skirtsImageLinks } = require('./skirtsImageLinks.js');
@@ -39,14 +37,13 @@ const { beddingImageLinks } = require('./beddingImageLinks.js');
 const { colorImageLinks } = require('./colorImageLinks.js'); 
 
 
-let dressesArr = generateProductNames(productBrandName, dressAdjectives, dressSubcategory, 0, 26);
-let pantsArr = generateProductNames(productBrandName, pantsAdjectives, pantsSubcategory, 0, 26);
-let skirtsArr = generateProductNames(productBrandName, dressAdjectives, skirtSubcategory, 0, 26);
-let beddingArr = generateProductNames(beddingAdjectives, beddingAdjectives, beddingSubcategory, 0, 26);
+let dressesArr = generateProductNames(productBrandName, dressAdjectives, dressSubcategory, 0, 260);
+let pantsArr = generateProductNames(productBrandName, pantsAdjectives, pantsSubcategory, 0, 260);
+let skirtsArr = generateProductNames(productBrandName, dressAdjectives, skirtSubcategory, 0, 260);
+let beddingArr = generateProductNames(beddingAdjectives, beddingAdjectives, beddingSubcategory, 0, 260);
 let productArr = dressesArr.concat(pantsArr, skirtsArr, beddingArr)
 
 let storage = [];
-// let fileNames = [];
 
 const createDresses = () => {
   let document = {};
@@ -146,13 +143,6 @@ const createBedding = () => {
   }
 }
 
-// fs.readdir(path.join(__dirname, './productImages'), (err, files) => {
-//   files.forEach(file => {
-//     fileNames.push(file)
-//   })
-//   if (err){
-//     console.log('error', err)
-//   }
 createDresses();
 createPants();
 createSkirts();
