@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 
-// Option 1: Passing parameters separately
 const db = new Sequelize('fec', 'root', '', {
   host: 'localhost',
   dialect: 'mysql'
