@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 
-const db = new Sequelize('fec', 'root', '', {
+const db = new Sequelize('fec', '', '', {
   host: 'localhost',
-  dialect: 'mysql'
+  dialect: 'postgres'
 });
 
 db

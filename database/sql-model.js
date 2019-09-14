@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const db = require('./sql-index/js');
+const db = require('./sql-index.js');
 
-const ProductDetail = sequelize.define('productdetail', {
+const ProductDetail = db.define('productdetail', {
   productCategoryId: {
     type: Sequelize.INTEGER,
     allowNull: false
@@ -61,7 +61,7 @@ const ProductDetail = sequelize.define('productdetail', {
   timestamps: false
 });
 
-ProductDetails.sync({ force: true });
+ProductDetail.sync({ force: true });
 
 
 module.exports = ProductDetail;
