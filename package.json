@@ -7,7 +7,7 @@
     "test": "jest",
     "start": "nodemon ./server/index.js",
     "build": "webpack -w",
-    "seed": "node --max-old-space-size=12288 ./database/seederSDC.js"
+    "seed": "node --max-old-space-size=12288 ./database/sql-seederSDC.js"
   },
   "jest": {
     "verbose": true,
@@ -15,14 +15,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ArthurKimGl19/Arthur_Kim_Product_Detail_Component.git"
+    "url": "https://github.com/team-nachos-sdc/anthropologie-product-eskarous.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ArthurKimGl19/Arthur_Kim_Product_Detail_Component/issues"
-  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
