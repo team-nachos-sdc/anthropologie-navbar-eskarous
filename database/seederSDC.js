@@ -46,8 +46,7 @@ const reviewStarImages = [
   '1 Star Image', '0.5 Star Image', '0 Star Image'
 ]
 const colors = [
-  'black', 'blue', 'brown', 'gray', 'green', 
-  'orange', 'pink', 'purple', 'red', 'white', 
+  'black', 'blue', 'brown', 'gray', 'green', 'pink', 'purple', 'red', 'white', 
   'yellow'
 ]
 
@@ -632,19 +631,28 @@ const assignCorrectImageLinks = () => {
   var randomIndex4 = Math.floor(Math.random() * Math.floor(imageLinks.length));
   return [imageLinks[randomIndex1], imageLinks[randomIndex2], imageLinks[randomIndex3], imageLinks[randomIndex4]];
 }
-const colorGrabber = (array, colorArray) => {
-  //grab first from array
-  var firstLink = array[0]
+// const colorGrabber = (array, colorArray) => {
+//   //grab first from array
+//   var firstLink = array[0]
 
-  var currentColor;
+//   var currentColor;
 
-  for (var i = 0; i < colorArray.length; i++) {
-    if (firstLink.indexOf(colorArray[i]) !== -1) {
-      currentColor = colorArray[i]
-    }
-  }
-  return currentColor;
-  //split it and find the colors
+//   for (var i = 0; i < colorArray.length; i++) {
+//     if (firstLink.indexOf(colorArray[i]) !== -1) {
+//       currentColor = colorArray[i]
+//     }
+//   }
+//   return currentColor;
+//   //split it and find the colors
+// }
+
+const colorRandomIndex = Math.floor(Math.random() * Math.floor(10));
+getColor = () => {
+  return colors[colorRandomIndex];
+}
+
+getColorImage = () => {
+  return colorImageLinks[colorRandomIndex];
 }
 
 let productArr = generateProductNames(productBrandNames, productAdjectives, productSubcategories, 0, 249);
@@ -674,8 +682,8 @@ const createProducts = () => {
     document.sizePetiteUnavailable = generateRandomValue(dressSkirtSizePetite);
     document.sizePlusUnavailable = generateRandomValue(dressSkirtSizePlus);
     document.image = assignCorrectImageLinks();
-    document.colors = colorGrabber(document.image, colors);
-    document.colorImages = colorImageLinks[createRandomIndex(colorImageLinks)];
+    document.colors = getColor();
+    document.colorImages = getColorImage();
     storage.push(document);
     document = {};
   }
@@ -705,4 +713,7 @@ fs.writeFile(`${__dirname}/one-million-records10.json`, JSON.stringify(products)
   console.log('Write successful, exiting...');
   process.exit(0);
 });
+
+// for mongoDB: in terminal enter:
+// for filename in *; do mongoimport --jsonArray --db fec --collection productdetails --file $filename; done
 
