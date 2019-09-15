@@ -1,10 +1,18 @@
+// const { 
+//   getById,
+//   createProduct,
+//   updateProduct,
+//   deleteProduct
+
+// } = require('../database/dbHelpers.js');
+
 const { 
   getById,
   createProduct,
   updateProduct,
   deleteProduct
 
-} = require('../database/dbHelpers.js');
+} = require('../database/sql-dbHelpers.js');
 
 const controller = {
 
