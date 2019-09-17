@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const ProductDetail = require('../database/sql-model.js');
 const fs = require('fs');
-const { Parser } = require('json2csv');
 
 //product categories
 const productCategories = [
@@ -632,20 +631,6 @@ const assignCorrectImageLinks = () => {
   var randomIndex4 = Math.floor(Math.random() * Math.floor(imageLinks.length));
   return [imageLinks[randomIndex1], imageLinks[randomIndex2], imageLinks[randomIndex3], imageLinks[randomIndex4]];
 }
-// const colorGrabber = (array, colorArray) => {
-//   //grab first from array
-//   var firstLink = array[0]
-
-//   var currentColor;
-
-//   for (var i = 0; i < colorArray.length; i++) {
-//     if (firstLink.indexOf(colorArray[i]) !== -1) {
-//       currentColor = colorArray[i]
-//     }
-//   }
-//   return currentColor;
-//   //split it and find the colors
-// }
 
 getColor = () => {
   return colors[Math.floor(Math.random() * Math.floor(10))];
@@ -707,11 +692,8 @@ const jsonToCSV = function(arr) {
         data += JSON.stringify(object[key].join(',')) + '#';
       }
     }
-    // console.log(data.split('#').join(','))
     return data.split('#').join(',');
   });
-  // console.log(fields);
-  // console.log(rows.join('\r\n'));
   const joinedRows = rows.join('\r\n');
   return joinedRows;
 };
