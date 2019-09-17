@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const ProductDetail = require('../database/sql-model.js');
 const fs = require('fs');
+const { Parser } = require('json2csv');
 
 //product categories
 const productCategories = [
@@ -646,13 +647,12 @@ const assignCorrectImageLinks = () => {
 //   //split it and find the colors
 // }
 
-const colorRandomIndex = Math.floor(Math.random() * Math.floor(10));
 getColor = () => {
-  return colors[colorRandomIndex];
+  return colors[Math.floor(Math.random() * Math.floor(10))];
 }
 
 getColorImage = () => {
-  return colorImageLinks[colorRandomIndex];
+  return colorImageLinks[Math.floor(Math.random() * Math.floor(10))];
 }
 
 let productArr = generateProductNames(productBrandNames, productAdjectives, productSubcategories, 0, 249);
@@ -665,25 +665,25 @@ const createRandomIndex = (array) => {
 
 const createProducts = () => {
   let document = {};
-  for (var i = 1; i <= 10; i++){
-    document.productCategoryId = i;
-    document.productCategory = productCategories[createRandomIndex(productCategories)];
-    document.productName = productArr[i];
+  for (var i = 1; i <= 1; i++){
+    document.product_category_id = i;
+    document.product_category = productCategories[createRandomIndex(productCategories)];
+    document.product_name = productArr[i];
     document.price = generateRandomNumber(100, 399);
-    document.brandName = generateRandomValue(designers);
-    document.onlineExclusive = generateRandomValue([true, false]);
-    document.reviewStarCount = getRandomArbitraryStarCount(1, 5);
-    document.reviewCount = generateRandomNumber(5, 40);
+    document.brand_name = generateRandomValue(designers);
+    document.online_exclusive = generateRandomValue([true, false]);
+    document.review_star_count = getRandomArbitraryStarCount(1, 5);
+    document.review_count = generateRandomNumber(5, 40);
     document.fit = fit;
-    document.sizeStandard = dressSkirtSize;
-    document.sizePetite = dressSkirtSizePetite;
-    document.sizePlus = dressSkirtSizePlus;
-    document.sizesUnavailable = generateRandomValue(dressSkirtSize);
-    document.sizePetiteUnavailable = generateRandomValue(dressSkirtSizePetite);
-    document.sizePlusUnavailable = generateRandomValue(dressSkirtSizePlus);
+    document.size_standard = dressSkirtSize;
+    document.size_petite = dressSkirtSizePetite;
+    document.size_plus = dressSkirtSizePlus;
+    document.sizes_unavailable = generateRandomValue(dressSkirtSize);
+    document.size_petite_unavailable = generateRandomValue(dressSkirtSizePetite);
+    document.size_plus_unavailable = generateRandomValue(dressSkirtSizePlus);
     document.image = assignCorrectImageLinks();
     document.colors = getColor();
-    document.colorImages = getColorImage();
+    document.color_images = getColorImage();
     storage.push(document);
     document = {};
   }
@@ -695,7 +695,6 @@ const products = createProducts();
 const insertMockData = function() {
   ProductDetail.sync({ force: true })
   .then(() => {
-    // Now the `users` table in the database corresponds to the model definition
     return ProductDetail.bulkCreate(products);
   });
 };
@@ -703,7 +702,7 @@ const insertMockData = function() {
 insertMockData();
 
 // write to file
-// fs.writeFile(`${__dirname}/one-million-records10.json`, JSON.stringify(products), (err) => {
+// fs.writeFile(`${__dirname}/records/ten-records01.json`, JSON.stringify(products), (err) => {
 //   if (err) {
 //     console.log('Error occured, exiting...');
 //     process.exit(-1);
@@ -711,4 +710,3 @@ insertMockData();
 //   console.log('Write successful, exiting...');
 //   process.exit(0);
 // });
-

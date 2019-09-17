@@ -12,7 +12,7 @@ const {
   updateProduct,
   deleteProduct
 
-} = require('../database/sql-dbHelpers.js');
+} = require('../database/dbHelpers.js');
 
 const controller = {
 

@@ -2,65 +2,60 @@ const Sequelize = require('sequelize');
 const db = require('./sql-index.js');
 
 const ProductDetail = db.define('productdetail', {
-  productCategoryId: {
+  product_category_id: {
     type: Sequelize.INTEGER,
     allowNull: false
   },
-  productCategory: {
-    type: Sequelize.STRING
+  product_category: {
+    type: Sequelize.STRING(120)
   },
-  productName: {
-    type: Sequelize.STRING
+  product_name: {
+    type: Sequelize.STRING(120)
   },
   price: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING(120)
   },
-  brandName: {
-    type: Sequelize.STRING
+  brand_name: {
+    type: Sequelize.STRING(120)
   },
-  onlineExclusive: {
+  online_exclusive: {
     type: Sequelize.BOOLEAN
   },
-  reviewStarCount: {
-    type: Sequelize.STRING
+  review_star_count: {
+    type: Sequelize.STRING(120)
   },
-  reviewCount: {
+  review_count: {
     type: Sequelize.INTEGER
   },
-  colors: {
-    type: Sequelize.STRING
-  },
-  colorImages: {
-    type: Sequelize.STRING
-  },
   fit: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    defaultValue: []
+    type: Sequelize.STRING(120)
   },
-  sizeStandard: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    defaultValue: []
+  size_standard: {
+    type: Sequelize.Sequelize.STRING(120)
   },
-  sizePetite: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    defaultValue: []
+  size_petite: {
+    type: Sequelize.Sequelize.STRING(120)
   },
-  sizePlus: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    defaultValue: []
+  size_plus: {
+    type: Sequelize.Sequelize.STRING(120)
   },
-  sizesUnavailable: {
-    type: Sequelize.STRING
+  sizes_unavailable: {
+    type: Sequelize.STRING(120)
   },
-  sizePetiteUnavailable: {
-    type: Sequelize.STRING
+  size_petite_unavailable: {
+    type: Sequelize.STRING(120)
   },
-  sizePlusUnavailable: {
-    type: Sequelize.STRING
+  size_plus_unavailable: {
+    type: Sequelize.STRING(120)
   },
   image: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    defaultValue: []
+    type: Sequelize.STRING(550)
+  },
+  colors: {
+    type: Sequelize.STRING(120)
+  },
+  color_images: {
+    type: Sequelize.STRING(120)
   }
 }, {
   timestamps: false

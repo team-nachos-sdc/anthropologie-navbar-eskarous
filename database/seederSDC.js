@@ -665,7 +665,7 @@ const createRandomIndex = (array) => {
 
 const createProducts = () => {
   let document = {};
-  for (var i = 9000001; i <= 10000000; i++){
+  for (var i = 1; i <= 10; i++){
     document.productCategoryId = i;
     document.productCategory = productCategories[createRandomIndex(productCategories)];
     document.productName = productArr[i];
@@ -705,7 +705,7 @@ const products = createProducts();
 // insertMockData();
 
 // write to file
-fs.writeFile(`${__dirname}/one-million-records10.json`, JSON.stringify(products), (err) => {
+fs.writeFile(`${__dirname}/records/ten-records01.json`, JSON.stringify(products), (err) => {
   if (err) {
     console.log('Error occured, exiting...');
     process.exit(-1);
