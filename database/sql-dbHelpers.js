@@ -1,9 +1,9 @@
 const ProductDetail = require('./sql-model.js');
 
-const getById = (productCategoryId) => {
+const getById = (id) => {
   return ProductDetail.findOne({
     where: {
-      productCategoryId
+      id
     }
   })
 }

@@ -2,10 +2,6 @@ const Sequelize = require('sequelize');
 const db = require('./sql-index.js');
 
 const ProductDetail = db.define('productdetail', {
-  product_category_id: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
   product_category: {
     type: Sequelize.STRING(120)
   },

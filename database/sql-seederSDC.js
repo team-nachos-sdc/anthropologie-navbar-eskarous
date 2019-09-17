@@ -655,7 +655,7 @@ getColorImage = () => {
   return colorImageLinks[Math.floor(Math.random() * Math.floor(10))];
 }
 
-let productArr = generateProductNames(productBrandNames, productAdjectives, productSubcategories, 0, 249);
+let productArr = generateProductNames(productBrandNames, productAdjectives, productSubcategories, 0, 11000000);
 
 let storage = [];
 
@@ -665,8 +665,7 @@ const createRandomIndex = (array) => {
 
 const createProducts = () => {
   let document = {};
-  for (var i = 1; i <= 1; i++){
-    document.product_category_id = i;
+  for (var i = 9000001; i <= 10000000; i++){
     document.product_category = productCategories[createRandomIndex(productCategories)];
     document.product_name = productArr[i];
     document.price = generateRandomNumber(100, 399);
@@ -692,21 +691,47 @@ const createProducts = () => {
 
 const products = createProducts();
 
-const insertMockData = function() {
-  ProductDetail.sync({ force: true })
-  .then(() => {
-    return ProductDetail.bulkCreate(products);
-  });
-};
 
-insertMockData();
+const jsonToCSV = function(arr) {
+  // const fields = Object.keys(arr[0]).join(',');
+  const rows = arr.map(function(object) {
+    let data = "";
+    for (let key in object) {
+      if (typeof object[key] === 'number' || typeof object[key] === 'boolean' || typeof object[key] === 'string') {
+        if (key !== 'color_images') {
+          data += object[key] + '#';
+        } else {
+        data += object[key];
+        }
+      } else {
+        data += JSON.stringify(object[key].join(',')) + '#';
+      }
+    }
+    // console.log(data.split('#').join(','))
+    return data.split('#').join(',');
+  });
+  // console.log(fields);
+  // console.log(rows.join('\r\n'));
+  const joinedRows = rows.join('\r\n');
+  return joinedRows;
+};
+jsonToCSV(products);
+
+// const insertMockData = function() {
+//   ProductDetail.sync({ force: true })
+//   .then(() => {
+//     return ProductDetail.bulkCreate(products);
+//   });
+// };
+
+// insertMockData();
 
 // write to file
-// fs.writeFile(`${__dirname}/records/ten-records01.json`, JSON.stringify(products), (err) => {
-//   if (err) {
-//     console.log('Error occured, exiting...');
-//     process.exit(-1);
-//   }
-//   console.log('Write successful, exiting...');
-//   process.exit(0);
-// });
+fs.writeFile(`${__dirname}/records/one-million-records10.csv`, jsonToCSV(products), (err) => {
+  if (err) {
+    console.log('Error occured, exiting...');
+    process.exit(-1);
+  }
+  console.log('Write successful, exiting...');
+  process.exit(0);
+});
