@@ -22,6 +22,6 @@ let productDetailSchema = new mongoose.Schema({
   image: [String]
 })
 
-let ProductDetail = mongoose.model('ProductDetail', productDetailSchema)
+let ProductDetail = mongoose.model('ProductDetail', productDetailSchema);
 
 module.exports = ProductDetail;

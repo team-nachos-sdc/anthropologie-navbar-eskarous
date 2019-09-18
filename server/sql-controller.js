@@ -3,7 +3,6 @@ const {
   createProduct,
   updateProduct,
   deleteProduct
-
 } = require('../database/sql-dbHelpers.js');
 
 const sqlController = {
