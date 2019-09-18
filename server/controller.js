@@ -1,18 +1,10 @@
-// const { 
-//   getById,
-//   createProduct,
-//   updateProduct,
-//   deleteProduct
-
-// } = require('../database/dbHelpers.js');
-
 const { 
   getById,
   createProduct,
   updateProduct,
   deleteProduct
 
-} = require('../database/sql-dbHelpers.js');
+} = require('../database/dbHelpers.js');
 
 const controller = {
 
@@ -25,25 +17,25 @@ const controller = {
   },
 
   post: (req, res) => {
-    let { productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image } = req.body;
-    createProduct(productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image)
+    let { productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image } = req.body;
+    createProduct(productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image)
     .then(data => res.status(201).send(data))
     .catch(err => res.status(401).send(err));
   },
 
   put: (req, res) => {
-    let {id: productCategoryId} = req.body.productCategoryId;
+    let { id } = req.params;
     let {productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image } = req.body;
-    updateProduct(productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image)
+    updateProduct(id, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image)
     .then(data => res.status(202).send(data))
     .catch(err => res.status(402).send(err));
   },
 
   delete: (req, res) => {
     let { id } = req.params;
-    console.log(`deleted id: ${id}`);
+    // console.log(`deleted id: ${id}`);
     deleteProduct(id)
-    .then(data => res.status(203).send(data))
+    .then(data => res.status(203).send(`deleted id: ${id}`))
     .catch(err => res.status(403).send(err));
   }
 

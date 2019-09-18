@@ -8,24 +8,24 @@ const getById = (id) => {
   })
 }
 
-const createProduct = (productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image) => {
+const createProduct = (product_category, product_name, price, brand_name, online_exclusive, review_star_count, review_count, colors, color_images, fit, size_standard, size_petite, size_plus, sizes_unavailable, size_petite_unavailable, size_plus_unavailable, image) => {
   return ProductDetail.create({
-    productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image
+    product_category, product_name, price, brand_name, online_exclusive, review_star_count, review_count, colors, color_images, fit, size_standard, size_petite, size_plus, sizes_unavailable, size_petite_unavailable, size_plus_unavailable, image
   });
 }
 
-const updateProduct = (productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image) => {
-  return ProductDetail.update({
+const updateProduct = (id, product_category, product_name, price, brand_name, online_exclusive, review_star_count, review_count, colors, color_images, fit, size_standard, size_petite, size_plus, sizes_unavailable, size_petite_unavailable, size_plus_unavailable, image) => {
+  return ProductDetail.update({ product_category, product_name, price, brand_name, online_exclusive, review_star_count, review_count, colors, color_images, fit, size_standard, size_petite, size_plus, sizes_unavailable, size_petite_unavailable, size_plus_unavailable, image }, {
     where: {
-      productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image
+      id
     }
   });
 }
 
-const deleteProduct = (productCategoryId) => {
+const deleteProduct = (id) => {
   return ProductDetail.destroy({
     where: {
-      productCategoryId
+      id
     }
   });
 }
