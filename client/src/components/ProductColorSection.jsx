@@ -1,6 +1,7 @@
 import React from 'react';
 import SizeList from './SizeList.jsx';
 import SizeGuides from './SizeGuides.jsx';
+import ColorCircle from './ColorCircle.jsx';
 
 class ProductColorSection extends React.Component {
   constructor(props) {
@@ -35,33 +36,35 @@ class ProductColorSection extends React.Component {
     }
   }
   render() {
-    let { colors, colorImages, sizeStandard, sizesUnavailable,
-      sizePetite, sizePetiteUnavailable, sizePlus, sizePlusUnavailable
+    let { color_images, colors , size_standard, sizes_unavailable,
+      size_petite, size_petite_unavailable, sizePlus, size_plus_unavailable
     } = this.props.pictureData;
+    let { currentColor, handleColorClick } = this.props;
     let quantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     let sizes, sizesOutofStock;
     if (this.state.clickedFit === 'standard-fit') {
-      sizes = sizeStandard;
-      sizesOutofStock = sizesUnavailable;
+      sizes = size_standard;
+      sizesOutofStock = sizes_unavailable;
     } else if (this.state.clickedFit === 'petite-fit') {
-      sizes = sizePetite;
-      sizesOutofStock = sizePetiteUnavailable;
+      sizes = size_petite;
+      sizesOutofStock = size_petite_unavailable;
     } else if (this.state.clickedFit === 'plus-fit') {
       sizes = sizePlus;
-      sizesOutofStock = sizePlusUnavailable;
+      sizesOutofStock = size_plus_unavailable;
     }
-
     if (this.props.pictureData) {
       return (
         <div className='product-color'>
           <div className='color-container'>
             <div className='color'>COLOR: </div>
-            <div className='type'>{colors[8]}</div>
+            <div className='type'>{currentColor}</div>
           </div>
           <div className='color-image-container'>
-            <div className='color-image-border'>
-              <img src={`${this.props.colorLink}`} className='color-image'></img>
-            </div>
+            {color_images.map((colorImage, i) => {
+              return (
+                <ColorCircle colorImage={colorImage} colors={colors} key={i} handleColorClick={handleColorClick}/>
+              )
+           })}
           </div>
           <div className='fit-container'>
             <div className='fit'>FIT: </div>

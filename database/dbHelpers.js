@@ -1,30 +1,38 @@
 const ProductDetail = require('./model.js');
 
-const dbHelpers = {
-  getById: (productCategoryId) => {
-    return ProductDetail.findOne({
-      productCategoryId
-    });
-  },
-
-  createProduct: (productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image) => {
-    return ProductDetail.create({
-      productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image
-    });
-  },
-
-  updateProduct: (productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image) => {
-    return ProductDetail.findOneAndUpdate({
-      productCategoryId, productCategory, productName, price, brandName, onlineExclusive, reviewStarCount, reviewCount, colors, colorImages, fit, sizeStandard, sizePetite, sizePlus, sizesUnavailable, sizePetiteUnavailable, sizePlusUnavailable, image
-    });
-  },
-
-  deleteProduct: (productCategoryId) => {
-    return ProductDetail.deleteOne({
-      productCategoryId
-    });
-  }
-
+const getById = (id) => {
+  return ProductDetail.findOne({
+    where: {
+      id
+    }
+  })
 }
 
-module.exports = dbHelpers;
+const createProduct = (product_category, product_name, price, brand_name, online_exclusive, review_star_count, review_count, colors, color_images, fit, size_standard, size_petite, size_plus, sizes_unavailable, size_petite_unavailable, size_plus_unavailable, image) => {
+  return ProductDetail.create({
+    product_category, product_name, price, brand_name, online_exclusive, review_star_count, review_count, colors, color_images, fit, size_standard, size_petite, size_plus, sizes_unavailable, size_petite_unavailable, size_plus_unavailable, image
+  });
+}
+
+const updateProduct = (id, product_category, product_name, price, brand_name, online_exclusive, review_star_count, review_count, colors, color_images, fit, size_standard, size_petite, size_plus, sizes_unavailable, size_petite_unavailable, size_plus_unavailable, image) => {
+  return ProductDetail.update({ product_category, product_name, price, brand_name, online_exclusive, review_star_count, review_count, colors, color_images, fit, size_standard, size_petite, size_plus, sizes_unavailable, size_petite_unavailable, size_plus_unavailable, image }, {
+    where: {
+      id
+    }
+  });
+}
+
+const deleteProduct = (id) => {
+  return ProductDetail.destroy({
+    where: {
+      id
+    }
+  });
+}
+
+module.exports = {
+  getById,
+  createProduct,
+  updateProduct,
+  deleteProduct
+}

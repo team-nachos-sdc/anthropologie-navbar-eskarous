@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const ProductDetail = require('../database/sql-model.js');
+const ProductDetail = require('./model.js/index.js');
 const fs = require('fs');
 
 //product categories
