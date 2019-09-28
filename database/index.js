@@ -3,7 +3,12 @@ const Sequelize = require('sequelize');
 const db = new Sequelize('fec', 'ubuntu', 'eskarous', {
   host: 'ec2-52-53-180-42.us-west-1.compute.amazonaws.com',
   dialect: 'postgres',
-  port: 5432
+  port: 5432,
+  pool: {
+    max: 15,
+    min: 0,
+    idle: 3000
+  }
 });
 
 db
